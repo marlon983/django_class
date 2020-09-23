@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+</head>
+<body class="container">
+  <h1 class="display-4 text-primary">{{title}}</h1>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>商品名</th>
+      <th>生産地</th>
+      <th>配送先</th>
+      <th>価格</th>
+      <th>添付情報</th>
+    </tr>
+  {% for item in data %}
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.product}}</td>
+      <td>{{item.area}}</td>
+      <td>{{item.delivery}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.attachment}}</td>
+      <td><a href="{% url 'edit' item.id %}">修正</a></td>
+      <td><a href="{% url 'delete' item.id %}">削除</a></td>
+    <tr>
+  {% endfor %}
+  </table>
+</body>
+</html>
